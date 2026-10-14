@@ -1,0 +1,13 @@
+{
+  "name": "worldline-converger",
+  "version": "0.1.0",
+  "private": true,
+  "description": "世界线收束器：定义世界观/大纲/人物，由 AI 推进世界线",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
