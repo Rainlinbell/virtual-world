@@ -21,7 +21,7 @@ router.put('/', (req, res) => {
     }
   }
   if (b.advance && typeof b.advance === 'object') {
-    for (const k of ['recentTimelineCount', 'maxRetries']) {
+    for (const k of ['recentTimelineCount', 'maxRetries', 'charPromptLimit']) {
       if (b.advance[k] !== undefined && b.advance[k] !== '') s.advance[k] = Number(b.advance[k]);
     }
   }

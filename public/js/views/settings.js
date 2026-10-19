@@ -52,6 +52,11 @@ const SettingsView = {
               <input type="number" id="set-retries" value="${s.advance.maxRetries}" min="0" max="5">
               <div class="field-hint">解析失败或正文字数不足 2000 字时自动重试</div>
             </div>
+            <div class="field">
+              <label>推进时注入的人物数量上限</label>
+              <input type="number" id="set-charlimit" value="${s.advance.charPromptLimit}" min="0" max="300">
+              <div class="field-hint">人物过多时会按「重要角色优先」截断注入 prompt；0 表示不限制</div>
+            </div>
           </div>
         </div>
         <div class="settings-actions">
@@ -72,7 +77,8 @@ const SettingsView = {
       },
       advance: {
         recentTimelineCount: Number(document.getElementById('set-recent').value) || 20,
-        maxRetries: Number(document.getElementById('set-retries').value) || 0
+        maxRetries: Number(document.getElementById('set-retries').value) || 0,
+        charPromptLimit: Number(document.getElementById('set-charlimit').value) || 0
       }
     });
 

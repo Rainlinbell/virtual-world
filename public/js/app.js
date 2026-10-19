@@ -8,7 +8,7 @@ function parseHash() {
   if (!h || h === '#/' || h === '#/home') return { view: 'home' };
   if ((m = h.match(/^#\/worlds\/([^?/]+)(?:\?(.*))?$/))) {
     const qs = new URLSearchParams(m[2] || '');
-    return { view: 'worldDetail', id: decodeURIComponent(m[1]), tab: qs.get('tab') || 'overview' };
+    return { view: 'worldDetail', id: decodeURIComponent(m[1]), tab: qs.get('tab') || 'overview', wl: qs.get('wl') };
   }
   if (h === '#/settings') return { view: 'settings' };
   if (h === '#/worlds') return { view: 'worldList' };
@@ -24,7 +24,7 @@ async function render() {
   });
   try {
     if (route.view === 'home') await Home.render(appEl);
-    else if (route.view === 'worldDetail') await WorldDetail.render(appEl, route.id, route.tab);
+    else if (route.view === 'worldDetail') await WorldDetail.render(appEl, route.id, route.tab, route.wl);
     else if (route.view === 'settings') await SettingsView.render(appEl);
     else await WorldList.render(appEl);
   } catch (e) {
